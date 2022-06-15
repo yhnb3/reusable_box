@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useCallback, useContext, useMemo, useState } from 'react'
+import Switch from './Switch'
 
 interface IProps {
   children: ReactNode
@@ -21,7 +22,7 @@ const Toggle = ({ children }: IProps) => {
   return <ToggleContext.Provider value={value}>{children}</ToggleContext.Provider>
 }
 
-const useToggleContext = () => {
+export const useToggleContext = () => {
   const context = useContext(ToggleContext)
   if (!context) {
     throw new Error('컨텍스트 없어요')
@@ -29,13 +30,9 @@ const useToggleContext = () => {
   return context
 }
 
-const Button = () => {
-  const { toggle } = useToggleContext()
-  return (
-    <button type='button' onClick={toggle}>
-      버튼
-    </button>
-  )
+export const Button = () => {
+  const { on, toggle } = useToggleContext()
+  return <Switch toggle={toggle} on={on} />
 }
 
 Toggle.Button = Button

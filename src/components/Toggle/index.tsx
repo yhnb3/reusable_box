@@ -9,14 +9,7 @@ const ToggleContext = createContext({ on: false, toggle: () => {} })
 
 const Toggle = ({ children }: IProps) => {
   const [on, setOn] = useState(false)
-  const toggle = useCallback(
-    () =>
-      setOn((prev) => {
-        console.log(prev)
-        return !prev
-      }),
-    [setOn]
-  )
+  const toggle = useCallback(() => setOn((prev) => !prev), [setOn])
   const value = useMemo(() => ({ on, toggle }), [on, toggle])
 
   return <ToggleContext.Provider value={value}>{children}</ToggleContext.Provider>
@@ -30,9 +23,14 @@ export const useToggleContext = () => {
   return context
 }
 
-export const Button = () => {
+interface IBtnProps {
+  size?: string
+  color?: string
+}
+
+export const Button = (props: IBtnProps) => {
   const { on, toggle } = useToggleContext()
-  return <Switch toggle={toggle} on={on} />
+  return <Switch toggle={toggle} on={on} {...props} />
 }
 
 Toggle.Button = Button

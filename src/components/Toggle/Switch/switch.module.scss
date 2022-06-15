@@ -3,12 +3,23 @@
 
 .toggleBtn {
   position: relative;
-  width: 200px;
-  height: 100px;
-  padding: 4px;
+  width: 40px;
+  height: 20px;
+  padding: 3%;
   cursor: pointer;
-  border: 1px solid color.$BLACK;
+  background-color: color.$GRAYD;
   border-radius: 50px;
+  transition: all 0.4s ease-out;
+
+  &.medium {
+    width: 60px;
+    height: 30px;
+  }
+
+  &.large {
+    width: 80px;
+    height: 40px;
+  }
 
   &::after {
     position: relative;
@@ -16,12 +27,22 @@
     width: 50%;
     height: 100%;
     content: '';
-    border: 1px solid color.$BLACK;
+    background-color: color.$WHITE;
     border-radius: 100%;
-    transition: all 0.3s ease-out;
+    transition: all 0.3s cubic-bezier(0.175, 0.5, 0.32, 1.275);
   }
 
   &.on {
+    background-color: color.$TOGGLE_GREEN;
+
+    &.blue {
+      background-color: color.$TOGGLE_BLUE;
+    }
+
+    &.red {
+      background-color: color.$TOGGLE_RED;
+    }
+
     &::after {
       transform: translate(100%);
     }

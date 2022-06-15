@@ -1,5 +1,13 @@
+import { Toggle } from '../../components'
+
 const Home = () => {
-  return <div>헬로 월드~</div>
+  return (
+    <div>
+      <Toggle>
+        <Toggle.Button />
+      </Toggle>
+    </div>
+  )
 }
 
 export default Home

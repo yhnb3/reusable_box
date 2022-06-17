@@ -6,6 +6,8 @@ interface IContext {
   open: boolean
   click: () => void
   trigger: MutableRefObject<HTMLButtonElement | null>
+  flexDirection: string
+  clickOutside: boolean
 }
 export const SelectionContext = createContext<IContext | null>(null)
 

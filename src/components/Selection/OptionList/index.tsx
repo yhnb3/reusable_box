@@ -10,12 +10,12 @@ interface IProps {
   border?: boolean
 }
 const OptionList = ({ children, border = true }: IProps) => {
-  const { open, click, trigger } = useSelectionContext()
+  const { open, click, trigger, clickOutside } = useSelectionContext()
   const listRef = useRef<HTMLDivElement | null>(null)
 
   useClickAway(listRef, (event) => {
     const el = trigger.current
-    el !== event.target && click()
+    clickOutside && el !== event.target && click()
   })
 
   return open ? (

@@ -9,6 +9,39 @@
   height: 100%;
 }
 
+.calendarHandler {
+  display: flex;
+  align-items: center;
+  height: 40px;
+
+  .prevBtn {
+    width: 20px;
+    height: 20px;
+    border: 3px solid color.$BLACK;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    transform: rotate(45deg);
+  }
+
+  .nextBtn {
+    width: 20px;
+    height: 20px;
+    border: 3px solid color.$BLACK;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    transform: rotate(-45deg);
+  }
+}
+
+.canlendarTitle {
+  height: 40px;
+  margin: 0 20px;
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 40px;
+  vertical-align: middle;
+}
+
 .calendarSection {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -23,11 +56,11 @@
   &.item {
     height: 200px;
     color: color.$GRAYA;
-    border-top: 2px solid color.$GRAYA;
+    border-top: 3px solid color.$GRAYA;
 
     &.current {
       color: color.$BLACK;
-      border-top: 2px solid color.$BLACK;
+      border-top: 3px solid color.$BLACK;
     }
   }
 }

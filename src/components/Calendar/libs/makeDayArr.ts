@@ -39,8 +39,8 @@ const fillCurrentMonthDay = ({ currentMonthDays, daysArr }: { currentMonthDays: 
 }
 
 interface IProps {
-  month: string
-  year: string
+  month: number
+  year: number
 }
 
 const fillNextMonthDay = ({ lastDay, daysArr }: { lastDay: number; daysArr: IDay[] }) => {
@@ -56,10 +56,10 @@ const fillNextMonthDay = ({ lastDay, daysArr }: { lastDay: number; daysArr: IDay
 }
 
 export const makeDayArr = ({ month, year }: IProps) => {
-  const prevMonth = month === '01' ? 12 : parseInt(month, 10) - 1
-  const prevYear = month === '01' ? parseInt(year, 10) - 1 : parseInt(year, 10)
+  const prevMonth = month === 1 ? 12 : month - 1
+  const prevYear = month === 1 ? year - 1 : year
   const prevMonthDays = calculateDay({ month: prevMonth, year: prevYear })
-  const currentMonthDays = calculateDay({ month: parseInt(month, 10), year: parseInt(year, 10) })
+  const currentMonthDays = calculateDay({ month, year })
   const firstDay = dayjs(`${year}-${month}-01`).day()
   const lastDay = dayjs(`${year}-${month}-${currentMonthDays}`).day()
 

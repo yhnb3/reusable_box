@@ -59,7 +59,7 @@ const Calendar = () => {
                 { [styles.today]: cell.date === todayDate }
               )}
             >
-              {cell.value}
+              <h2 className={styles.calendarDay}>{cell.value}</h2>
             </div>
           )
         })}

@@ -1,73 +1,174 @@
 @use '/src/styles/contants/color';
 
-.calendarContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-}
-
-.calendarHandler {
-  display: flex;
-  align-items: center;
-  height: 40px;
-
-  .prevBtn {
-    width: 20px;
-    height: 20px;
-    border: 3px solid color.$BLACK;
-    border-top-color: transparent;
-    border-right-color: transparent;
-    transform: rotate(45deg);
+@media (max-width: 1000px) {
+  .calendarContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
   }
 
-  .nextBtn {
-    width: 20px;
-    height: 20px;
-    border: 3px solid color.$BLACK;
-    border-top-color: transparent;
-    border-left-color: transparent;
-    transform: rotate(-45deg);
+  .canlendarTitle {
+    width: 160px;
+    height: 40px;
+    margin: 0 20px;
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 40px;
+    text-align: center;
+    vertical-align: middle;
   }
-}
 
-.canlendarTitle {
-  width: 160px;
-  height: 40px;
-  margin: 0 20px;
-  font-size: 30px;
-  font-weight: 800;
-  line-height: 40px;
-  text-align: center;
-  vertical-align: middle;
-}
+  .calendarHandler {
+    display: flex;
+    align-items: center;
+    height: 40px;
 
-.calendarSection {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 20px;
-}
-
-.calendarCell {
-  width: 100px;
-  height: 50px;
-  padding: 20px 10px;
-
-  &.item {
-    height: 200px;
-    color: color.$GRAYA;
-    border-top: 3px solid color.$GRAYA;
-
-    &.current {
-      color: color.$BLACK;
-      border-top: 3px solid color.$BLACK;
+    .prevBtn {
+      width: 20px;
+      height: 20px;
+      border: 3px solid color.$BLACK;
+      border-top-color: transparent;
+      border-right-color: transparent;
+      transform: rotate(45deg);
     }
 
-    &.today {
-      color: color.$CALENDAR_TODAY;
-      border-top: 3px solid color.$CALENDAR_TODAY;
+    .nextBtn {
+      width: 20px;
+      height: 20px;
+      border: 3px solid color.$BLACK;
+      border-top-color: transparent;
+      border-left-color: transparent;
+      transform: rotate(-45deg);
+    }
+  }
+
+  .calendarSection {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+  }
+
+  .calendarCell {
+    display: flex;
+    flex-direction: column;
+    width: 60px;
+    height: 80px;
+    padding: 20px 0;
+
+    &.head {
+      height: 80px;
+      margin-bottom: 40px;
+      font-weight: 600;
+      color: color.$GRAYA;
+      border-bottom: 3px solid color.$BLACK;
+    }
+
+    &.item {
+      padding: 0;
+      color: color.$GRAYA;
+
+      &.current {
+        color: color.$BLACK;
+      }
+
+      &.today {
+        color: color.$CALENDAR_TODAY;
+      }
+
+      .calendarDay {
+        font-size: 20px;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+@media (min-width: 1000px) {
+  .calendarContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .calendarHandler {
+    display: flex;
+    align-items: center;
+    height: 40px;
+
+    .prevBtn {
+      width: 20px;
+      height: 20px;
+      border: 3px solid color.$BLACK;
+      border-top-color: transparent;
+      border-right-color: transparent;
+      transform: rotate(45deg);
+    }
+
+    .nextBtn {
+      width: 20px;
+      height: 20px;
+      border: 3px solid color.$BLACK;
+      border-top-color: transparent;
+      border-left-color: transparent;
+      transform: rotate(-45deg);
+    }
+  }
+
+  .canlendarTitle {
+    width: 160px;
+    height: 40px;
+    margin: 0 20px;
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 40px;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .calendarSection {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 20px;
+  }
+
+  .calendarCell {
+    display: flex;
+    flex-direction: column;
+    width: 120px;
+    height: 50px;
+    padding: 20px 0;
+
+    &.head {
+      font-weight: 600;
+      color: color.$GRAYA;
+    }
+
+    &.item {
+      height: 200px;
+      padding: 10px;
+      color: color.$GRAYA;
+      border-top: 3px solid color.$GRAYA;
+
+      &.current {
+        color: color.$BLACK;
+        border-top: 3px solid color.$BLACK;
+      }
+
+      &.today {
+        color: color.$CALENDAR_TODAY;
+        background-color: color.$GRAYE;
+        border-top: 3px solid color.$CALENDAR_TODAY;
+      }
+
+      .calendarDay {
+        font-size: 26px;
+        font-weight: 600;
+      }
     }
   }
 }

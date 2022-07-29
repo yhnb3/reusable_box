@@ -12,7 +12,17 @@ const INIT: IDay[] = [
   { type: 'head', value: 'Sun' },
 ]
 
-const fillPrevMonthDay = ({ prevMonthDays, firstDay }: { prevMonthDays: number; firstDay: number }) => {
+const fillPrevMonthDay = ({
+  prevMonthDays,
+  firstDay,
+  year,
+  month,
+}: {
+  prevMonthDays: number
+  firstDay: number
+  year: number
+  month: number
+}) => {
   const newDaysArr = [...INIT]
   const range = firstDay === 0 ? 6 : firstDay - 1
   let startPrevMonth = prevMonthDays - range + 1
@@ -20,6 +30,7 @@ const fillPrevMonthDay = ({ prevMonthDays, firstDay }: { prevMonthDays: number; 
     newDaysArr.push({
       type: 'cell',
       value: String(startPrevMonth),
+      date: `${year}-${month}-${startPrevMonth}`,
       isCurrent: false,
     })
     startPrevMonth += 1
@@ -27,11 +38,22 @@ const fillPrevMonthDay = ({ prevMonthDays, firstDay }: { prevMonthDays: number; 
   return newDaysArr
 }
 
-const fillCurrentMonthDay = ({ currentMonthDays, daysArr }: { currentMonthDays: number; daysArr: IDay[] }) => {
+const fillCurrentMonthDay = ({
+  currentMonthDays,
+  daysArr,
+  year,
+  month,
+}: {
+  currentMonthDays: number
+  daysArr: IDay[]
+  year: number
+  month: number
+}) => {
   for (let i = 1; i < currentMonthDays + 1; i += 1) {
     daysArr.push({
       type: 'cell',
-      value: String(i),
+      value: i < 10 ? `0${i}` : `${i}`,
+      date: `${year}-${month}-${i}`,
       isCurrent: true,
     })
   }
@@ -43,12 +65,23 @@ interface IProps {
   year: number
 }
 
-const fillNextMonthDay = ({ lastDay, daysArr }: { lastDay: number; daysArr: IDay[] }) => {
+const fillNextMonthDay = ({
+  lastDay,
+  daysArr,
+  year,
+  month,
+}: {
+  lastDay: number
+  daysArr: IDay[]
+  year: number
+  month: number
+}) => {
   const range = lastDay === 0 ? 0 : 7 - lastDay
   for (let i = 1; i < range + 1; i += 1) {
     daysArr.push({
       type: 'cell',
-      value: String(i),
+      value: i < 10 ? `0${i}` : `${i}`,
+      date: `${year}-${month}-${i}`,
       isCurrent: false,
     })
   }
@@ -58,12 +91,14 @@ const fillNextMonthDay = ({ lastDay, daysArr }: { lastDay: number; daysArr: IDay
 export const makeDayArr = ({ month, year }: IProps) => {
   const prevMonth = month === 1 ? 12 : month - 1
   const prevYear = month === 1 ? year - 1 : year
+  const nextMonth = month === 12 ? 1 : month + 1
+  const nextYear = month === 12 ? year + 1 : year
   const prevMonthDays = calculateDay({ month: prevMonth, year: prevYear })
   const currentMonthDays = calculateDay({ month, year })
   const firstDay = dayjs(`${year}-${month}-01`).day()
   const lastDay = dayjs(`${year}-${month}-${currentMonthDays}`).day()
 
-  const prevMonthDaysArr = fillPrevMonthDay({ prevMonthDays, firstDay })
-  const currentMonthDaysArr = fillCurrentMonthDay({ currentMonthDays, daysArr: prevMonthDaysArr })
-  return fillNextMonthDay({ lastDay, daysArr: currentMonthDaysArr })
+  const prevMonthDaysArr = fillPrevMonthDay({ prevMonthDays, firstDay, year: prevYear, month: prevMonth })
+  const currentMonthDaysArr = fillCurrentMonthDay({ currentMonthDays, daysArr: prevMonthDaysArr, year, month })
+  return fillNextMonthDay({ lastDay, daysArr: currentMonthDaysArr, year: nextYear, month: nextMonth })
 }

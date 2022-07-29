@@ -13,6 +13,8 @@ const Calendar = () => {
   })
   const { month, year } = date
 
+  const todayDate = dayjs().format('YYYY-M-D')
+
   const onNextClick = () => {
     setDate(({ year: prevYear, month: prevMonth }) => {
       if (prevMonth === 12) return { year: prevYear + 1, month: 1 }
@@ -36,7 +38,7 @@ const Calendar = () => {
           {' '}
         </button>
         <h1 className={styles.canlendarTitle}>
-          {year}.{month}
+          {year}.{month < 10 ? `0${month}` : month}
         </h1>
         <button className={styles.nextBtn} type='button' onClick={onNextClick}>
           {' '}
@@ -48,7 +50,15 @@ const Calendar = () => {
           const key = `${cell.type}-${cell.value}-${cell.isCurrent ? '' : 'not'}`
           const cellType = cell.type === 'head' ? `${styles.head}` : `${styles.item}`
           return (
-            <div key={key} className={cx(cellType, styles.calendarCell, { [styles.current]: cell.isCurrent })}>
+            <div
+              key={key}
+              className={cx(
+                cellType,
+                styles.calendarCell,
+                { [styles.current]: cell.isCurrent },
+                { [styles.today]: cell.date === todayDate }
+              )}
+            >
               {cell.value}
             </div>
           )

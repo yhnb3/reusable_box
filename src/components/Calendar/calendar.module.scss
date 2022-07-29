@@ -34,11 +34,13 @@
 }
 
 .canlendarTitle {
+  width: 160px;
   height: 40px;
   margin: 0 20px;
   font-size: 30px;
   font-weight: 800;
   line-height: 40px;
+  text-align: center;
   vertical-align: middle;
 }
 
@@ -61,6 +63,11 @@
     &.current {
       color: color.$BLACK;
       border-top: 3px solid color.$BLACK;
+    }
+
+    &.today {
+      color: color.$CALENDAR_TODAY;
+      border-top: 3px solid color.$CALENDAR_TODAY;
     }
   }
 }

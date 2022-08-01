@@ -1,46 +1,30 @@
-# Getting Started with Create React App
+# Reusable Box
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+나중에 한 번 쯤은 구현할 만한 것들을 미리 제작해보는 컨셉으로 만든 Repo입니다. 따로 페이지를 만들어서 배포하지 않고 스토리 북을 이용해서 배포 하였습니다.
 
-## Available Scripts
+#### [스토리북 주소](https://62e7b6d26be980cbac8f5731-kjdsbsohoa.chromatic.com/) 
 
-In the project directory, you can run:
+## Skills
 
-### `npm start`
+- React
+- Typescript
+- scss
+- storybook
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 만든 것
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1. 토글 버튼
 
-### `npm test`
+2. 셀렉션
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   재사용성이 높은 컴포넌트라는 목적을 가지고 만들어본 컴포넌트.
 
-### `npm run build`
+   [참고한 영상](https://www.youtube.com/watch?v=fR8tsJ2r7Eg)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   - 셀렉션을 이용한 드랍다운
+   - 셀렉션을 이용한 `메인Nav`와 `interaction`하는 페이지 구현
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. 달력
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+   - 화면 크기에 따른 반응형 디자인 적용
+   - [참고 디자인](https://dribbble.com/shots/15755836-Construction-Calendar)

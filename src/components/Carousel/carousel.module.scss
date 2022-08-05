@@ -1,0 +1,43 @@
+@use '/src/styles/contants/color';
+
+.carouselContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 40vw;
+  height: 24vw;
+  overflow: hidden;
+}
+
+.prevBtn {
+  position: absolute;
+  left: 2vw;
+  z-index: 1;
+  width: 2vw;
+  height: 2vw;
+  border: 2px solid color.$WHITE;
+  border-top: transparent;
+  border-right: transparent;
+  transform: rotate(45deg);
+}
+
+.nextBtn {
+  position: absolute;
+  right: 2vw;
+  z-index: 1;
+  width: 2vw;
+  height: 2vw;
+  border: 2px solid color.$WHITE;
+  border-bottom: transparent;
+  border-left: transparent;
+  transform: rotate(45deg);
+}
+
+.carouselImage {
+  width: 100%;
+  height: 100%;
+  object-position: top;
+  object-fit: cover;
+  transition: transform 0.5s;
+  transform: translateX(-40vw);
+}

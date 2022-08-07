@@ -40,3 +40,26 @@
   object-fit: cover;
   transform: translateX(-40vw);
 }
+
+.indicatorContainer {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  display: flex;
+  transform: translateX(-50%);
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  background-color: color.$GRAYA;
+  border-radius: 50%;
+
+  + .indicator {
+    margin-left: 10px;
+  }
+
+  &.currentIndicator {
+    background-color: color.$WHITE;
+  }
+}

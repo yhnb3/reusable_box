@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { MouseEventHandler, useState } from 'react'
+import cx from 'classnames'
 import styles from './carousel.module.scss'
 
 const players = ['halland', 'debruyne', 'phoden', 'rodrigo']
@@ -38,6 +39,18 @@ const Carousel = () => {
     setTransition('transform 0.5s ease-in-out')
   }
 
+  const indicatorOnClick: MouseEventHandler<HTMLButtonElement> = (e) => {
+    const { number } = e.currentTarget.dataset
+    setLocation(parseInt(String(number), 10))
+    setTransition('transform 0.5s ease-in-out')
+  }
+
+  const current = () => {
+    if (location === 0) return players.length
+    if (location === players.length + 1) return 1
+    return location
+  }
+
   return (
     <div className={styles.carouselContainer}>
       <button className={styles.prevBtn} type='button' onClick={prevBtnOnClick}>
@@ -71,6 +84,22 @@ const Carousel = () => {
       <button className={styles.nextBtn} type='button' onClick={nextBtnOnClick}>
         {' '}
       </button>
+      <div className={styles.indicatorContainer}>
+        {players.map((_, idx) => {
+          const key = `carousel-indicator-${idx}`
+          return (
+            <button
+              data-number={idx + 1}
+              type='button'
+              key={key}
+              className={cx(styles.indicator, { [styles.currentIndicator]: current() === idx + 1 })}
+              onClick={indicatorOnClick}
+            >
+              {' '}
+            </button>
+          )
+        })}
+      </div>
     </div>
   )
 }

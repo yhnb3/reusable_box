@@ -2,7 +2,7 @@
 
 나중에 한 번 쯤은 구현할 만한 것들을 미리 제작해보는 컨셉으로 만든 Repo입니다. 따로 페이지를 만들어서 배포하지 않고 스토리 북을 이용해서 배포 하였습니다.
 
-#### [스토리북 주소](https://62e7b6d26be980cbac8f5731-kjdsbsohoa.chromatic.com/) 
+#### [스토리북 주소](https://62e7b6d26be980cbac8f5731-vulipevlhl.chromatic.com/) 
 
 ## Skills
 
@@ -29,7 +29,7 @@
    - 화면 크기에 따른 반응형 디자인 적용
    - [참고 디자인](https://dribbble.com/shots/15755836-Construction-Calendar)
 
-3. 케러셀
+4. 케러셀
 
    - 인피니티 케러셀 구현
    - 창 크기에 따른 이미지 최적화

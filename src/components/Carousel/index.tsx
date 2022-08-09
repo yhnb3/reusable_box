@@ -1,4 +1,4 @@
-import { MouseEventHandler, useRef, useState } from 'react'
+import { MouseEventHandler, useEffect, useRef, useState } from 'react'
 
 import CarouselIndicator from './CarouselIndicator'
 import styles from './carousel.module.scss'
@@ -9,10 +9,49 @@ const Carousel = () => {
   const [location, setLocation] = useState(1)
   const [transition, setTransition] = useState('transform 0.5s ease-in-out')
   const [isThrottle, setIsThrottle] = useState(false)
+  const [isPrevFocus, setIsPrevFocus] = useState(false)
+  const [isNextFocus, setIsNextFocus] = useState(false)
+  const isFocus = isPrevFocus || isNextFocus
+
+  const onPrevButtonFocus = () => {
+    setIsPrevFocus(true)
+  }
+
+  const onPrevButtonBlur = () => {
+    setIsPrevFocus(false)
+  }
+
+  const onNextButtonFocus = () => {
+    setIsNextFocus(true)
+  }
+
+  const onNextButtonBlur = () => {
+    setIsNextFocus(false)
+  }
+
   const timer = useRef<NodeJS.Timer | null>(null)
+  const interval = useRef<NodeJS.Timer | undefined>(undefined)
+
   const playersForImage = [players[players.length - 1], ...players, players[0]]
 
   const transform = `translate(-${100 * location}%)`
+
+  useEffect(() => {
+    if (!isFocus && !interval.current) {
+      interval.current = setInterval(() => {
+        setLocation((prev) => {
+          if (prev === players.length) {
+            moveSlide(1)
+          }
+          return prev + 1
+        })
+        setTransition('transform 0.5s ease-in-out')
+      }, 2000)
+    } else if (isFocus) {
+      clearInterval(interval.current)
+      interval.current = undefined
+    }
+  }, [isFocus])
 
   const moveSlide = (n: number) => {
     setTimeout(() => {
@@ -69,7 +108,13 @@ const Carousel = () => {
 
   return (
     <div className={styles.carouselContainer}>
-      <button className={styles.prevBtn} type='button' onClick={prevBtnOnClick}>
+      <button
+        className={styles.prevBtn}
+        type='button'
+        onClick={prevBtnOnClick}
+        onFocus={onPrevButtonFocus}
+        onBlur={onPrevButtonBlur}
+      >
         {' '}
       </button>
       {playersForImage.map((player, idx) => {
@@ -81,7 +126,13 @@ const Carousel = () => {
           </picture>
         )
       })}
-      <button className={styles.nextBtn} type='button' onClick={nextBtnOnClick}>
+      <button
+        className={styles.nextBtn}
+        type='button'
+        onClick={nextBtnOnClick}
+        onFocus={onNextButtonFocus}
+        onBlur={onNextButtonBlur}
+      >
         {' '}
       </button>
       <CarouselIndicator onClick={indicatorOnClick} players={players} current={current} />

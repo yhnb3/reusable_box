@@ -1,0 +1,16 @@
+@use '/src/styles/contants/color';
+
+.logContainer {
+  padding: 10px 0;
+  margin-top: 10px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px color.$GRAYA, -3px 3px 3px color.$GRAYA;
+}
+
+.logKeyword {
+  padding: 0 15px;
+
+  + .logKeyword {
+    margin-top: 10px;
+  }
+}

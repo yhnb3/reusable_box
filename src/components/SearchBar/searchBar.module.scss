@@ -1,0 +1,10 @@
+@use '/src/styles/contants/color';
+
+.input {
+  width: 600px;
+  height: 30px;
+  padding: 5px 15px;
+  color: color.$GRAYA;
+  background-color: color.$GRAYE;
+  border-radius: 40px;
+}

@@ -1,4 +1,3 @@
-import { Dispatch, SetStateAction } from 'react'
 import styles from './searchLog.module.scss'
 
 interface IProps {
@@ -11,7 +10,7 @@ const SearchLog = ({ data }: IProps) => {
       {data.map((keyword, idx) => {
         const key = `${keyword}-${idx}`
         return (
-          <p className={styles.logKeyword} key={key}>
+          <p className={styles.logKeyword} key={key} tabIndex={idx - idx}>
             {keyword}
           </p>
         )

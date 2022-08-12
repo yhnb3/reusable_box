@@ -8,7 +8,14 @@
 }
 
 .logKeyword {
+  height: 30px;
   padding: 0 15px;
+  line-height: 30px;
+  vertical-align: middle;
+
+  &:focus {
+    background-color: color.$GRAYD;
+  }
 
   + .logKeyword {
     margin-top: 10px;

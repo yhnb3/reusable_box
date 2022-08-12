@@ -7,7 +7,7 @@ const SEARCH_LOG = ['자바스크립트', '리액트', '타입스크립트', '�
 
 const SearchBar = () => {
   const [inputValue, setInputValue] = useState('')
-  const [isFocus, setIsFocus] = useState(false)
+  const [isLogOpen, setIsLogOpen] = useState(false)
 
   const onInputChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const { value } = e.currentTarget
@@ -15,11 +15,7 @@ const SearchBar = () => {
   }
 
   const onInputFocus: FocusEventHandler<HTMLInputElement> = () => {
-    setIsFocus(true)
-  }
-
-  const onInputBlur: FocusEventHandler<HTMLInputElement> = () => {
-    setIsFocus(false)
+    setIsLogOpen(true)
   }
 
   const filteredData = SEARCH_LOG.filter((keyword) => {
@@ -35,10 +31,9 @@ const SearchBar = () => {
           value={inputValue}
           onChange={onInputChange}
           onFocus={onInputFocus}
-          onBlur={onInputBlur}
         />
       </form>
-      {isFocus && filteredData.length > 0 ? <SearchLog data={filteredData} /> : null}
+      {isLogOpen && filteredData.length > 0 ? <SearchLog data={filteredData} /> : null}
     </div>
   )
 }

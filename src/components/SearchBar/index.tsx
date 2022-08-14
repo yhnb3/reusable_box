@@ -33,7 +33,7 @@ const SearchBar = () => {
           onFocus={onInputFocus}
         />
       </form>
-      {isLogOpen && filteredData.length > 0 ? <SearchLog data={filteredData} /> : null}
+      {isLogOpen && filteredData.length > 0 ? <SearchLog data={filteredData} keyword={inputValue} /> : null}
     </div>
   )
 }

@@ -46,7 +46,13 @@ const SearchBar = () => {
         />
       </form>
       {isLogOpen && filteredData.length > 0 ? (
-        <SearchLogContainer data={filteredData} keyword={inputValue} focusIndex={focusIndex} />
+        <SearchLogContainer
+          data={filteredData}
+          keyword={inputValue}
+          focusIndex={focusIndex}
+          setFocusIndex={setFocusIndex}
+          setIsLogOpen={setIsLogOpen}
+        />
       ) : null}
     </div>
   )

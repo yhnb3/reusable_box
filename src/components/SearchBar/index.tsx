@@ -1,13 +1,14 @@
-import { ChangeEventHandler, FocusEventHandler, useState } from 'react'
+import { ChangeEventHandler, FocusEventHandler, KeyboardEventHandler, useState } from 'react'
 
 import styles from './searchBar.module.scss'
-import SearchLog from './SearchLog'
+import SearchLogContainer from './SearchLogContainer'
 
 const SEARCH_LOG = ['자바스크립트', '리액트', '타입스크립트', '스토리북']
 
 const SearchBar = () => {
   const [inputValue, setInputValue] = useState('')
   const [isLogOpen, setIsLogOpen] = useState(false)
+  const [focusIndex, setFocusIndex] = useState(0)
 
   const onInputChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const { value } = e.currentTarget
@@ -22,6 +23,16 @@ const SearchBar = () => {
     return keyword.includes(inputValue)
   })
 
+  const onInputKeyDown: KeyboardEventHandler<HTMLInputElement> = (e) => {
+    if (e.key === 'Tab') return
+    if (e.key === 'ArrowUp') {
+      e.preventDefault()
+      setFocusIndex((prev) => (prev - 1 + filteredData.length) % filteredData.length)
+    } else if (e.key === 'ArrowDown') {
+      setFocusIndex((prev) => (prev + 1) % filteredData.length)
+    }
+  }
+
   return (
     <div>
       <form>
@@ -31,9 +42,12 @@ const SearchBar = () => {
           value={inputValue}
           onChange={onInputChange}
           onFocus={onInputFocus}
+          onKeyDown={onInputKeyDown}
         />
       </form>
-      {isLogOpen && filteredData.length > 0 ? <SearchLog data={filteredData} keyword={inputValue} /> : null}
+      {isLogOpen && filteredData.length > 0 ? (
+        <SearchLogContainer data={filteredData} keyword={inputValue} focusIndex={focusIndex} />
+      ) : null}
     </div>
   )
 }

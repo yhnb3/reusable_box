@@ -13,6 +13,10 @@
   line-height: 30px;
   vertical-align: middle;
 
+  &.selected {
+    background-color: color.$GRAYD;
+  }
+
   &:focus {
     background-color: color.$GRAYD;
   }

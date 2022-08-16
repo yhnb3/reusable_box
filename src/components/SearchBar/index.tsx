@@ -45,7 +45,6 @@ const SearchBar = () => {
 
   return (
     <div>
-      <div>{searchValue}</div>
       <form>
         <input
           className={styles.input}
@@ -66,6 +65,7 @@ const SearchBar = () => {
           setSearchValue={setSearchValue}
         />
       ) : null}
+      <div className={styles.searchValue}>검색어 : {searchValue}</div>
     </div>
   )
 }

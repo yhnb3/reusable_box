@@ -7,12 +7,14 @@ const SEARCH_LOG = ['자바스크립트', '리액트', '타입스크립트', '�
 
 const SearchBar = () => {
   const [inputValue, setInputValue] = useState('')
+  const [searchValue, setSearchValue] = useState('')
   const [isLogOpen, setIsLogOpen] = useState(false)
   const [focusIndex, setFocusIndex] = useState(0)
 
   const onInputChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const { value } = e.currentTarget
     setInputValue(value)
+    setSearchValue(value)
   }
 
   const onInputFocus: FocusEventHandler<HTMLInputElement> = () => {
@@ -27,19 +29,28 @@ const SearchBar = () => {
     if (e.key === 'Tab') return
     if (e.key === 'ArrowUp') {
       e.preventDefault()
-      setFocusIndex((prev) => (prev - 1 + filteredData.length) % filteredData.length)
+      setFocusIndex((prev) => {
+        const nextIdx = (prev - 1 + filteredData.length) % filteredData.length
+        setSearchValue(filteredData[nextIdx])
+        return nextIdx
+      })
     } else if (e.key === 'ArrowDown') {
-      setFocusIndex((prev) => (prev + 1) % filteredData.length)
+      setFocusIndex((prev) => {
+        const nextIdx = (prev + 1) % filteredData.length
+        setSearchValue(filteredData[nextIdx])
+        return nextIdx
+      })
     }
   }
 
   return (
     <div>
+      <div>{searchValue}</div>
       <form>
         <input
           className={styles.input}
           type='text'
-          value={inputValue}
+          value={searchValue}
           onChange={onInputChange}
           onFocus={onInputFocus}
           onKeyDown={onInputKeyDown}
@@ -52,6 +63,7 @@ const SearchBar = () => {
           focusIndex={focusIndex}
           setFocusIndex={setFocusIndex}
           setIsLogOpen={setIsLogOpen}
+          setSearchValue={setSearchValue}
         />
       ) : null}
     </div>

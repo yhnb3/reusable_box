@@ -10,11 +10,13 @@ interface IProps {
   focusIndex: number
   setFocusIndex: Dispatch<SetStateAction<number>>
   setIsLogOpen: Dispatch<SetStateAction<boolean>>
+  setSearchValue: Dispatch<SetStateAction<string>>
 }
 
-const SearchLogContainer = ({ data, keyword, focusIndex, setFocusIndex, setIsLogOpen }: IProps) => {
+const SearchLogContainer = ({ data, keyword, focusIndex, setFocusIndex, setIsLogOpen, setSearchValue }: IProps) => {
   const onLogFocus: FocusEventHandler<HTMLDivElement> = (e) => {
     const { idx } = e.currentTarget.dataset
+    setSearchValue(data[Number(idx)])
     setFocusIndex(Number(idx))
   }
 

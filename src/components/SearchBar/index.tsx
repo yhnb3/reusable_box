@@ -1,4 +1,5 @@
-import { ChangeEventHandler, FocusEventHandler, KeyboardEventHandler, useState } from 'react'
+import { ChangeEventHandler, FocusEventHandler, KeyboardEventHandler, useMemo, useState } from 'react'
+import { SearchBarContext } from './hooks'
 
 import styles from './searchBar.module.scss'
 import SearchLogContainer from './SearchLogContainer'
@@ -10,6 +11,15 @@ const SearchBar = () => {
   const [searchValue, setSearchValue] = useState('')
   const [isLogOpen, setIsLogOpen] = useState(false)
   const [focusIndex, setFocusIndex] = useState(0)
+
+  const contextValue = useMemo(
+    () => ({
+      setFocusIndex,
+      setIsLogOpen,
+      setSearchValue,
+    }),
+    []
+  )
 
   const onInputChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const { value } = e.currentTarget
@@ -44,29 +54,24 @@ const SearchBar = () => {
   }
 
   return (
-    <div>
-      <form>
-        <input
-          className={styles.input}
-          type='text'
-          value={searchValue}
-          onChange={onInputChange}
-          onFocus={onInputFocus}
-          onKeyDown={onInputKeyDown}
-        />
-      </form>
-      {isLogOpen && filteredData.length > 0 ? (
-        <SearchLogContainer
-          data={filteredData}
-          keyword={inputValue}
-          focusIndex={focusIndex}
-          setFocusIndex={setFocusIndex}
-          setIsLogOpen={setIsLogOpen}
-          setSearchValue={setSearchValue}
-        />
-      ) : null}
-      <div className={styles.searchValue}>검색어 : {searchValue}</div>
-    </div>
+    <SearchBarContext.Provider value={contextValue}>
+      <div>
+        <form>
+          <input
+            className={styles.input}
+            type='text'
+            value={searchValue}
+            onChange={onInputChange}
+            onFocus={onInputFocus}
+            onKeyDown={onInputKeyDown}
+          />
+        </form>
+        {isLogOpen && filteredData.length > 0 ? (
+          <SearchLogContainer data={filteredData} keyword={inputValue} focusIndex={focusIndex} />
+        ) : null}
+        <div className={styles.searchValue}>검색어 : {searchValue}</div>
+      </div>
+    </SearchBarContext.Provider>
   )
 }
 

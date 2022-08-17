@@ -1,0 +1,24 @@
+@use '/src/styles/contants/color';
+
+.logKeyword {
+  height: 30px;
+  padding: 0 15px;
+  line-height: 30px;
+  vertical-align: middle;
+
+  &.selected {
+    background-color: color.$GRAYD;
+  }
+
+  &:focus {
+    background-color: color.$GRAYD;
+  }
+
+  + .logKeyword {
+    margin-top: 10px;
+  }
+}
+
+strong {
+  font-weight: 600;
+}

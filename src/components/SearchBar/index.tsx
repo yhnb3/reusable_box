@@ -4,7 +4,17 @@ import { SearchBarContext } from './hooks'
 import styles from './searchBar.module.scss'
 import SearchLogContainer from './SearchLogContainer'
 
-const SEARCH_LOG = ['자바스크립트', '리액트', '타입스크립트', '스토리북']
+const SEARCH_LOG = [
+  '자바스크립트',
+  '리액트',
+  '타입스크립트',
+  '스토리북',
+  '자바',
+  'Javascript',
+  'React',
+  'Stroybook',
+  'Typescript',
+]
 
 const SearchBar = () => {
   const [inputValue, setInputValue] = useState('')
@@ -32,7 +42,7 @@ const SearchBar = () => {
   }
 
   const filteredData = SEARCH_LOG.filter((keyword) => {
-    return keyword.includes(inputValue)
+    return keyword.toLowerCase().includes(inputValue.toLowerCase())
   })
 
   const onInputKeyDown: KeyboardEventHandler<HTMLInputElement> = (e) => {

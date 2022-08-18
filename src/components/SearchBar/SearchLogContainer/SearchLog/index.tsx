@@ -17,7 +17,7 @@ interface IProps {
 const SearchLog = ({ currentIdx, data, target, keyword, focusIndex }: IProps) => {
   const { setSearchValue, setFocusIndex, setIsLogOpen } = useSearchBarContext()
 
-  const strongTarget = findIndex({ target, keyword })
+  const strongTarget = findIndex({ target: target.toLowerCase(), keyword: keyword.toLowerCase() })
   const isSelected = focusIndex === currentIdx
 
   const onLogFocus: FocusEventHandler<HTMLDivElement> = (e) => {

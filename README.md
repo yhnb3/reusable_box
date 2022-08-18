@@ -2,7 +2,7 @@
 
 나중에 한 번 쯤은 구현할 만한 것들을 미리 제작해보는 컨셉으로 만든 Repo입니다. 따로 페이지를 만들어서 배포하지 않고 스토리 북을 이용해서 배포 하였습니다.
 
-#### [스토리북 주소](https://62e7b6d26be980cbac8f5731-vulipevlhl.chromatic.com/) 
+#### [스토리북 주소](https://62e7b6d26be980cbac8f5731-swrbenjzud.chromatic.com/) 
 
 ## Skills
 

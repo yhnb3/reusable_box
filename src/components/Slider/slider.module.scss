@@ -1,42 +1,20 @@
 @use '/src/styles/contants/color';
 
 .sliderContainer {
+  width: 200px;
+}
+
+.tooltip {
   position: relative;
-}
-
-.input[type='range'] {
-  width: 200px;
+  left: -2px;
+  width: 20px;
   height: 20px;
-  padding: 0;
-
-  &::-webkit-slider-thumb {
-    width: 16px;
-    height: 16px;
-    background: #0fb9b9;
-    border: 2px solid color.$WHITE;
-    border-radius: 50%;
-    box-shadow: 1px 1px 1px color.$GRAYA;
-    -webkit-appearance: none;
-  }
-}
-
-.track {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  width: 200px;
-  height: 20px;
-  border: none;
-  border-radius: 15px;
-
-  &::-webkit-meter-bar {
-    height: 10px;
-    background: color.$GRAYD;
-    border: none;
-  }
-
-  &::-webkit-meter-optimum-value {
-    background: #0fb9b9;
-  }
+  margin-bottom: 10px;
+  font-size: 10px;
+  line-height: 20px;
+  color: color.$WHITE;
+  text-align: center;
+  vertical-align: 20px;
+  background: color.$GRAYA;
+  border-radius: 5px;
 }

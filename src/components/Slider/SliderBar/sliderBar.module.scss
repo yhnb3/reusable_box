@@ -1,0 +1,46 @@
+@use '/src/styles/contants/color';
+
+.sliderBarContainer {
+  position: relative;
+}
+
+.input[type='range'] {
+  width: 200px;
+  height: 20px;
+  padding: 0;
+
+  &::-webkit-slider-thumb {
+    width: 16px;
+    height: 16px;
+    background: color.$WHITE;
+    border: 2px solid #0fb9b9;
+    border-radius: 50%;
+    box-shadow: 1px 1px 1px color.$GRAYA;
+    -webkit-appearance: none;
+  }
+
+  &::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+  }
+}
+
+.track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 200px;
+  height: 20px;
+  border: none;
+  border-radius: 15px;
+
+  &::-webkit-meter-bar {
+    height: 6px;
+    background: color.$GRAYD;
+    border: none;
+  }
+
+  &::-webkit-meter-optimum-value {
+    background: #0fb9b9;
+  }
+}

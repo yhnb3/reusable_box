@@ -5,6 +5,7 @@
 }
 
 .input[type='range'] {
+  position: relative;
   width: 200px;
   height: 20px;
   padding: 0;
@@ -15,7 +16,6 @@
     background: color.$WHITE;
     border: 2px solid #0fb9b9;
     border-radius: 50%;
-    box-shadow: 1px 1px 1px color.$GRAYA;
     -webkit-appearance: none;
   }
 

@@ -9,15 +9,7 @@ interface IProps {
 const SliderBar = ({ value, onSliderChange }: IProps) => {
   return (
     <div className={styles.sliderBarContainer}>
-      <input
-        type='range'
-        className={styles.input}
-        min='0'
-        max='100'
-        value={value}
-        onChange={onSliderChange}
-        onMouseDown={(e) => console.dir(e.currentTarget)}
-      />
+      <input type='range' className={styles.input} min='0' max='100' value={value} onChange={onSliderChange} />
       <meter className={styles.track} min='0' max='100' value={value} />
     </div>
   )

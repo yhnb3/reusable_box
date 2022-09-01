@@ -7,14 +7,15 @@ const Slider = () => {
 
   const onSliderChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const nextValue = e.currentTarget.value
+    console.log(1)
     setValue(Number(nextValue))
   }
 
   return (
     <div className={styles.sliderContainer}>
-      <div className={styles.tooltip} style={{ transform: `translateX(${value * 1.84}px)` }}>
+      <output className={styles.tooltip} style={{ transform: `translateX(${value * 1.84}px)` }}>
         {value}
-      </div>
+      </output>
       <SliderBar value={value} onSliderChange={onSliderChange} />
     </div>
   )

@@ -1,0 +1,21 @@
+@use '/src/styles/contants/color';
+
+.track {
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 200px;
+  height: 20px;
+  border: none;
+  border-radius: 15px;
+
+  &::-webkit-meter-bar {
+    height: 6px;
+    background: color.$GRAYD;
+    border: none;
+  }
+
+  &::-webkit-meter-optimum-value {
+    background: #0fb9b9;
+  }
+}

@@ -1,10 +1,10 @@
-import { Slider } from 'components'
+import { SliderWithoutInput } from 'components'
 import styles from './home.module.scss'
 
 const Home = () => {
   return (
     <div className={styles.container}>
-      <Slider />
+      <SliderWithoutInput min={0} max={100} step={1} />
     </div>
   )
 }

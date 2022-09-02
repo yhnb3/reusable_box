@@ -1,0 +1,14 @@
+@use '/src/styles/contants/color';
+
+.handle {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: color.$WHITE;
+  border: 2px solid color.$BLUE;
+  border-radius: 50%;
+
+  &:hover {
+    box-shadow: 0 0 0 2px rgba(color.$BLUE, 0.2);
+  }
+}
